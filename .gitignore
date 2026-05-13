@@ -1,0 +1,14 @@
+.venv/
+venv/
+GROUPONE/
+__pycache__/
+*.py[cod]
+*.log
+
+logs/
+data/temp/
+data/*.duckdb
+
+# Local / oversized raw datasets
+data/raw/Highway-Rail_Grade_Crossing_Accident_Data.csv
+data/raw/Traffic_Crashes_-_Crashes.csv

@@ -1,0 +1,105 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data from extraction layer
+    tables:
+      - name: flights
+        description: Raw flight operations data
+        columns:
+          - name: flight_id
+            description: Unique flight identifier
+            tests:
+              - unique
+              - not_null
+          - name: date
+            description: Flight date
+          - name: carrier
+            description: Airline code
+          - name: dep_delay
+            description: Departure delay in minutes
+            
+      - name: weather
+        description: Weather data by airport
+        columns:
+          - name: airport
+            description: Airport code
+            tests:
+              - unique
+              - not_null
+              
+      - name: revenue
+        description: Booking and revenue data
+        columns:
+          - name: booking_id
+            description: Unique booking identifier
+            tests:
+              - unique
+              - not_null
+
+models:
+  - name: stg_flights
+    description: Cleaned and standardized flight data
+    columns:
+      - name: flight_id
+        description: Unique flight identifier
+        tests:
+          - unique
+          - not_null
+      - name: departure_delay_minutes
+        description: Departure delay in minutes
+        tests:
+          - not_null
+      - name: arrival_delay_minutes
+        description: Arrival delay in minutes
+
+  - name: stg_weather
+    description: Cleaned weather data
+    columns:
+      - name: airport
+        description: Airport code
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_flights
+    description: Fact table combining flights and weather
+    columns:
+      - name: flight_id
+        tests:
+          - unique
+          - not_null
+      - name: carrier
+        tests:
+          - not_null
+      - name: origin
+        tests:
+          - not_null
+      - name: dest
+        tests:
+          - not_null
+
+  - name: dim_carriers
+    description: Dimension table for airlines
+    columns:
+      - name: carrier
+        description: Airline code
+        tests:
+          - unique
+          - not_null
+      - name: total_flights
+        description: Total number of flights
+        tests:
+          - not_null
+
+  - name: dim_routes
+    description: Dimension table for routes
+    columns:
+      - name: route_code
+        description: Route identifier (origin-dest)
+        tests:
+          - unique
+          - not_null
+      - name: total_flights
+        tests:
+          - not_null

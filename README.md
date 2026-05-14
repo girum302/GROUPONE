@@ -571,8 +571,8 @@ MIT License - see LICENSE file for details
 For issues, questions, or contributions:
 
 1. **GitHub Issues:** Create an issue in the repository
-2. **Email:** data-team@example.com
-3. **Slack:** #flight-analytics-etl
+2. **Email:** addisumekonn8@gmail.com
+4. **Slack:** #flight-analytics-etl
 
 ---
 

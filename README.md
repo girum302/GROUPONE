@@ -217,7 +217,7 @@ cd flight-analytics-etl
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 
-# Or use conda
+# Or use conda (anacondas terminal)
 conda create -n flight-etl python=3.11
 conda activate flight-etl
 ```
